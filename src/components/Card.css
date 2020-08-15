@@ -22,13 +22,13 @@
 }
 
 .Card.Red .Header{ color: #FFFF; background-color: #c62828;}
-.Card.Red .content{background-color: #c62828;}
+.Card.Red .content{background-color: #f44336;}
 
 .Card.Green .Header{ color:#FFFF; background-color: green;}
-.Card.Green .content{background-color:green;}
+.Card.Green .content{background-color:rgb(13, 112, 13);}
 
 .Card.Blue .Header{ color: #FFFF; background-color: blue;}
-.Card.Blue .content{background-color:blue;}
+.Card.Blue .content{background-color:rgb(32, 32, 161);}
 
 .Card.Purple .Header{ color: #FFFF; background-color: purple;}
-.Card.Purple .content{background-color: purple;}
+.Card.Purple .content{background-color: rgb(133, 29, 133);}

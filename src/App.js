@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Card from './components/Card';
+import Intervalo from './components/Intervalo';
 
 
 function App() {
@@ -8,11 +9,11 @@ function App() {
     <div className="App">
       <h1>Learning Redux (Simples)</h1>
       <div className="linha">
-        <Card title="Card 1" red>X</Card>
-        <Card title="Card 2" green>X</Card>
+        <Intervalo></Intervalo>
       </div>
 
       <div className="linha">
+        <Card title="Card 2" green>X</Card>
         <Card title="Card 3" blue> Y</Card>
         <Card title="Card 4" purple> Y</Card>
       </div>
