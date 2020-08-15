@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Media from './components/Media';
 import Soma from './components/Soma';
@@ -9,20 +9,21 @@ import Intervalo from './components/Intervalo';
 // Conseguiremos utilizar um estado dentro de um componente de função.
 function App() {
 
-  const [min, setMin] = useState(1)
-  const [max, setMax] = useState(10)
+  const [min, setMin] = useState(10)
+  const [max, setMax] = useState(20)
 
   return (
     <div className="App">
       <h1>Learning Redux (Simples)</h1>
       <div className="linha">
-        <Intervalo></Intervalo>
+        <Intervalo min={min} max={max}
+          onMinChanged={setMin} onMaxChanged={setMax}></Intervalo>
       </div>
 
       <div className="linha">
         <Media min={min} max={max}></Media>
         <Soma min={min} max={max}></Soma>
-        <Sorteio min={min} max={max}></Sorteio>       
+        <Sorteio min={min} max={max}></Sorteio>
       </div>
     </div>
   );
