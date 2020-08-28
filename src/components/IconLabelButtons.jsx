@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -12,23 +12,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const OutlinedButtons = () => {
-  
-const classes = useStyles();
+
+  const [count, setCount] = useState(0);
+
+  const classes = useStyles();
 
   return (
     <div className={classes.button}>
-      <Button variant="outlined">Default</Button>
-      <Button variant="outlined" color="primary">
-        Primary
-      </Button>
       <Button variant="outlined" color="secondary">
         Secondary
-      </Button>
-      <Button variant="outlined" disabled>
-        Disabled
-      </Button>
-      <Button variant="outlined" color="primary" href="#outlined-buttons">
-        Link
       </Button>
     </div>
   );
