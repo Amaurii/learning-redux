@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 function Copyright() {
+  const {theme} = useContext(Context);
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -22,6 +23,7 @@ function Copyright() {
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
+     <label>{theme}</label>
     </Typography>
   );
 }
@@ -44,92 +46,87 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  box:{
+  box: {
     margin: theme.spacing(2)
   },
 }));
 
-/**
- * Redux and Types
- */
+const Context = createContext();
 
-const mapStateTopProps = (state) =>({
-  token: state.authorization.token,
-  authorized: state.authorization.authorized,
-  credentials: state.authorization.credentials
-});
 
-const  LoginForm  = (props) => {
- 
-  const { credentials, login } = props;
+const LoginForm = () => {
+
   const classes = useStyles();
-  const [state, setState] = useState(credentials);
-  
+  const theme = 'dark';
+
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LocalTaxiRoundedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-         Login
+    <Context.Provider value= {{theme}}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LocalTaxiRoundedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Login
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="E-mail"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="senha"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Lembrar"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Logar
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="E-mail"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="senha"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Lembrar"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Logar
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Equeceu ?
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Equeceu ?
               </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Não tem cadastro? Criar"}
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Não tem cadastro? Criar"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+      </Container>
+    </Context.Provider>
   );
 }
 
-export default LoginForm ;
+export default LoginForm;
