@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 function Copyright() {
-  const {theme} = useContext(Context);
+  const ctx = useContext(Context);
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -23,7 +23,7 @@ function Copyright() {
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
-     <label>{theme}</label>
+  <label>{ctx.theme} - {ctx.title}</label>
     </Typography>
   );
 }
@@ -53,14 +53,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Context = createContext();
 
-
 const LoginForm = () => {
 
   const classes = useStyles();
   const theme = 'dark';
 
   return (
-    <Context.Provider value= {{theme}}>
+    <Context.Provider value= {{theme, title: 'Hello My Friends'}}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         
